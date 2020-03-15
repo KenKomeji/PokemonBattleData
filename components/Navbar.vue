@@ -37,25 +37,48 @@
               <em>User</em>
             </template>
             <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign In</b-dropdown-item>
+            <b-dropdown-item v-if="isSignIn" @click="logout"
+              >Sign Out</b-dropdown-item
+            >
+            <b-dropdown-item v-else @click="login">Sign In</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
   </div>
 </template>
-<style>
-.NuxtLogo {
-  animation: 1s appear;
-  margin: auto;
-}
 
-@keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
+<script>
+import { mapActions } from 'vuex'
+import firebase from '@/plugins/firebase.js'
+
+export default {
+  components: {},
+  computed: {
+    isSignIn() {
+      return this.$store.state.userInfo.isSignedIn
+    },
+    username_display() {
+      return this.$store.state.userInfo.user
+    }
+  },
+  methods: {
+    ...mapActions('userInfo', ['logoutStat']),
+    login() {
+      const provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithRedirect(provider)
+    },
+    logout() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.logoutStat()
+        })
+        .catch((error) => {
+          print(error.Message)
+        })
+    }
   }
 }
-</style>
+</script>
