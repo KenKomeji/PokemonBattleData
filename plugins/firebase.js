@@ -9,7 +9,7 @@ const config = {
   storageBucket: 'pokemon-aba1a.appspot.com',
   messagingSenderId: '910291865843',
   appId: '1:910291865843:web:f94e537c265b0d64da2786',
-  measurementId: 'G-4JJPL54172'
+  measurementId: 'G-4JJPL54172',
 }
 
 if (!firebase.apps.length) {

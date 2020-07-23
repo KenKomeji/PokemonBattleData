@@ -1,7 +1,7 @@
 export const state = () => ({
   user: '',
   uid: '',
-  isSignedIn: false
+  isSignedIn: false,
 })
 
 export const mutations = {
@@ -13,7 +13,7 @@ export const mutations = {
   },
   setIsSignedIn(state, isSignedIn) {
     state.isSignedIn = isSignedIn
-  }
+  },
 }
 
 export const actions = {
@@ -26,7 +26,7 @@ export const actions = {
     context.commit('setIsSignedIn', false)
     context.commit('setUser', '')
     context.commit('setUid', '')
-  }
+  },
 }
 export const getters = {
   getUser(state) {
@@ -34,5 +34,5 @@ export const getters = {
   },
   getIsSignedIn(state) {
     return state.isSignedIn
-  }
+  },
 }

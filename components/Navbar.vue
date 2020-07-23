@@ -7,7 +7,7 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#">Link</b-nav-item>
+          <b-nav-item to="/battleData">Link</b-nav-item>
           <b-nav-item href="#" disabled>Disabled</b-nav-item>
         </b-navbar-nav>
 
@@ -60,7 +60,7 @@ export default {
     },
     username_display() {
       return this.$store.state.userInfo.user
-    }
+    },
   },
   methods: {
     ...mapActions('userInfo', ['logoutStat']),
@@ -69,6 +69,7 @@ export default {
       firebase.auth().signInWithRedirect(provider)
     },
     logout() {
+      require('firebase/auth')
       firebase
         .auth()
         .signOut()
@@ -78,7 +79,7 @@ export default {
         .catch((error) => {
           print(error.Message)
         })
-    }
-  }
+    },
+  },
 }
 </script>

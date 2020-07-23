@@ -29,6 +29,7 @@ export default {
    */
   plugins: [
     { src: '@/plugins/routerOption' },
+    { src: '~/plugins/localStorage.js', ssr: false }
     ],
   /*
    ** Nuxt.js dev-modules
@@ -47,13 +48,20 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    'nuxt-webfontloader'
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  
+  webfontloader: {
+    google: {
+      families: ['Josefin+Sans']
+    }
+  },
   /*
    ** Build configuration
    */

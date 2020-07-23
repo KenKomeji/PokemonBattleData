@@ -17,7 +17,7 @@ export default ({ app, store }) => {
       } else {
         store.dispatch('userInfo/loginStat', {
           displayName: user.displayName,
-          userId: user.uid
+          userId: user.uid,
         })
       }
     })
